@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sales & Marketing</title>
+</head>
+
+<body>
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#Sales" data-toggle="tab">Sales</a></li>
+            <li class=""><a href="#Marketing" data-toggle="tab">Marketing</a></li>
+            <li class=""><a href="#Services" data-toggle="tab">Services</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="Sales">
+                <div class="page header"><h2>Submit a Sales Order</h2></div>
+
+                <form class="form-horizontal" formmethod="post">
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail">Product Sold</label>
+                        <select name="name">
+                            <option>Pen</option>
+                            <option>Pencil</option>
+                            <option>Paper</option>
+                            <option>Dolls</option>
+                            <option>Happiness</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail">Amount of USD</label>
+                        <div class="controls">
+                            <input type="text" id="inputEmail" placeholder="200 Dollars" name="amount">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputPassword">Quantity of Product</label>
+                        <div class="controls">
+                            <input id="inputPassword" placeholder="100 Pencils" name="quantity">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputPassword">Customer Name</label>
+                        <div class="controls">
+                            <input id="inputPassword" placeholder="Walmart" name="customer">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <label class="checkbox">
+                                <input type="checkbox" name="received"> Received
+                            </label>
+                            <input name="salesperson">aaron</input>
+                            <button type="submit" formmethod="post"
+                                    formaction="http://afternoon-basin-47187.herokuapp.com/sales/sale" class="btn" target="_blank">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="page header"><h2>Mark Sales Received</h2></div>
+                <form class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label" for="inputPassword">Sales ID</label>
+                        <div class="controls">
+                            <input name="salesperson">aaron</input>
+                            <input id="inputPassword" placeholder="524" name="sale_id">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="btn" formmethod="post"
+                                    formaction="http://afternoon-basin-47187.herokuapp.com/sales/received">Mark Received</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="page header"><h2>My Sales Records</h2></div>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>($)Amount</th>
+                            <th>Customer</th>
+                            <th>Received</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="success">
+                            <td>234</td>
+                            <td>Pens</td>
+                            <td>100</td>
+                            <td>200</td>
+                            <td>Walmart</td>
+                            <td>True</td>
+                        </tr>
+                        <tr>
+                            <td>544</td>
+                            <td>Pencils</td>
+                            <td>150</td>
+                            <td>300</td>
+                            <td>Best Buy</td>
+                            <td>False</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="page header"><h2>My Sales Receipts</h2></div>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>($)Amount</th>
+                            <th>Customer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="success">
+                            <td>234</td>
+                            <td>Pens</td>
+                            <td>100</td>
+                            <td>200</td>
+                            <td>Walmart</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tab-pane fade" id="Marketing">
+                <div class="page header"><h2>Start a new Campaign</h2></div>
+                <form class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail">Name of Campaign</label>
+                        <div class="controls">
+                            <input type="text" id="inputEmail" placeholder="Canada Day Sale!">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputPassword">Creator Name</label>
+                        <div class="controls">
+                            <input id="inputPassword" placeholder="Aaron Li">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail">Type of Campaign</label>
+                        <select>
+                            <option>Email</option>
+                            <option>Google AdSense</option>
+                            <option>Owl Message</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="btn">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="page header"><h2>Submit Campaign Feedback</h2></div>
+                <form class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmail">ID of Campaign</label>
+                        <div class="controls">
+                            <input type="text" id="inputEmail" placeholder="678">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputPassword">Feedback</label>
+                        <div class="controls">
+                            <textarea rows="4"></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button type="submit" class="btn">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="page header"><h2>Currently Running Campaigns</h2></div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Creator</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr class="">
+                            <td>546</td>
+                            <td>Tim Hortons Roll up the Rim to Win</td>
+                            <td>John Smith</td>
+                            <td>Email</td>
+                        </tr>
+                        <tr class="">
+                            <td>678</td>
+                            <td>Canada Day Sale</td>
+                            <td>Aaron Li</td>
+                            <td>Google AdSense</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tab-pane fade" id="Services">
+                <div class="page header"><h2>My Customer Feedback</h2></div>
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Feedback</th>
+                        <th>Product</th>
+                        <th>Target</th>
+                        <th>Rating</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr class="success">
+                        <td>This is a fantastic salesman. Love him!</td>
+                        <td>Pens</td>
+                        <td>Sales</td>
+                        <td>Great</td>
+                    </tr>
+                    <tr class="warning">
+                        <td>This employee was very rude to me! :(</td>
+                        <td>Pencils</td>
+                        <td>Shipment</td>
+                        <td>Poor</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
