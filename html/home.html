@@ -16,8 +16,10 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div class="tab-pane fade in active" id="Sales">
+                <label class="control-label" for="inputPassword">Salesman Name</label>
+                <form class="form-horiztonal">
+                    <input name="salesperson"></input>
                 <div class="page header"><h2>Submit a Sales Order</h2></div>
-
                 <form class="form-horizontal" formmethod="post">
                     <div class="control-group">
                         <label class="control-label" for="inputEmail">Product Sold</label>
@@ -52,7 +54,6 @@
                             <label class="checkbox">
                                 <input type="checkbox" name="received"> Received
                             </label>
-                            <input name="salesperson">aaron</input>
                             <button type="submit" formmethod="post"
                                     formaction="http://afternoon-basin-47187.herokuapp.com/sales/sale" class="btn" target="_blank">Submit</button>
                         </div>
@@ -64,7 +65,6 @@
                     <div class="control-group">
                         <label class="control-label" for="inputPassword">Sales ID</label>
                         <div class="controls">
-                            <input name="salesperson">aaron</input>
                             <input id="inputPassword" placeholder="524" name="sale_id">
                         </div>
                     </div>
@@ -131,26 +131,24 @@
                         </tr>
                     </tbody>
                 </table>
+                </form>
             </div>
 
             <div class="tab-pane fade" id="Marketing">
+                <label class="control-label" for="inputPassword">Planner Name</label>
+                <form class="form-horiztonal">
+                    <input name="planner"></input>
                 <div class="page header"><h2>Start a new Campaign</h2></div>
-                <form class="form-horizontal">
+                <form class="form-horizontal" formmethod="post">
                     <div class="control-group">
                         <label class="control-label" for="inputEmail">Name of Campaign</label>
                         <div class="controls">
-                            <input type="text" id="inputEmail" placeholder="Canada Day Sale!">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="inputPassword">Creator Name</label>
-                        <div class="controls">
-                            <input id="inputPassword" placeholder="Aaron Li">
+                            <input type="text" id="inputEmail" placeholder="Canada Day Sale!" name="name">
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="inputEmail">Type of Campaign</label>
-                        <select>
+                        <select name="type">
                             <option>Email</option>
                             <option>Google AdSense</option>
                             <option>Owl Message</option>
@@ -158,7 +156,8 @@
                     </div>
                     <div class="control-group">
                         <div class="controls">
-                            <button type="submit" class="btn">Submit</button>
+                            <button type="submit" class="btn" formmethod="post"
+                                    formaction="http://afternoon-basin-47187.herokuapp.com/marketing/campaign">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -166,20 +165,33 @@
                 <div class="page header"><h2>Submit Campaign Feedback</h2></div>
                 <form class="form-horizontal">
                     <div class="control-group">
-                        <label class="control-label" for="inputEmail">ID of Campaign</label>
+                        <label class="control-label" for="inputEmail">Name of Campaign</label>
                         <div class="controls">
-                            <input type="text" id="inputEmail" placeholder="678">
+                            <input type="text" id="inputEmail" placeholder="Canada Day Sale!" name="name">
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="inputPassword">Feedback</label>
+                        <label class="control-label" for="inputEmail">Customer feedback name</label>
                         <div class="controls">
-                            <textarea rows="4"></textarea>
+                            <input type="text" id="inputEmail" placeholder="Amazon" name="customer">
                         </div>
                     </div>
                     <div class="control-group">
+                        <label class="control-label" for="inputEmail">Feedback Attributes</label>
+                        <label class="checkbox">
+                            <input type="checkbox" name="deleted"> Deleted
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" name="opened"> Opened
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" name="stay_time"> Time viewed
+                        </label>
+                    </div>
+                    <div class="control-group">
                         <div class="controls">
-                            <button type="submit" class="btn">Submit</button>
+                            <button type="submit" class="btn" formmethod="post"
+                                formaction="http://afternoon-basin-47187.herokuapp.com/marketing/feedback">Submit</button>
                         </div>
                     </div>
                 </form>
@@ -241,6 +253,7 @@
                     </tbody>
                 </table>
             </div>
+            </form>
         </div>
     </div>
 
