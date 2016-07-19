@@ -59,7 +59,6 @@ var CampaignRecords = React.createClass({
     },
     render: function() {
 	var _this = this;
-	console.warn(this.state.records);
 	var createItem = function(item, index) {
 	    return (
 		    <tr key={index} className="success">
