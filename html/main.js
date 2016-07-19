@@ -82,3 +82,45 @@ var CampaignRecords = React.createClass({
 });
 
 ReactDOM.render(<CampaignRecords />, document.getElementById('campaign_records'));
+
+var CustomerRecords = React.createClass({
+    mixins: [ReactFireMixin],
+    getInitialState: function() {
+	return {
+	    records: [],
+	    mark: 2
+	}
+    },
+    componentWillMount: function() {
+	ref = firebase.database().ref('customers');
+	this.bindAsArray(ref, "records", function(err){
+	    console.warn(err);
+	});
+    },
+    render: function() {
+	var _this = this;
+	var createItem = function(item, index) {
+	    return (
+		    <tr key={index} className="success">
+		    <th>{ item['.key'] }</th>
+		    <th>{ item['name'] }</th>
+		    <th>{ item['shipping_addr'] }</th>
+		    <th>{ item['billing_addr'] }</th>
+		    <th>{ item['email'] }</th>
+		    </tr>
+		);
+	};
+	return (<tbody>
+		<tr className="info">
+                <td>ID</td>
+		<td>Name</td>
+		<td>Shipping Address</td>
+                <td>Billing Address</td>
+                <td>Email</td>
+                </tr>
+		{ this.state.records.map(createItem) }
+		</tbody>);
+    }
+});
+
+ReactDOM.render(<CustomerRecords />, document.getElementById('customer_records'));
