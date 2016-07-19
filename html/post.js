@@ -65,9 +65,10 @@ function campaignFeedback() {
     var nameVal = document.getElementById('nameFeedback').value;
     customerVal = document.getElementById('customerFeedback').value;
     plannerVal = document.getElementById('planner').value;
-    deletedVal = document.getElementById('deleted').value;
-    openedVal = document.getElementById('opened').value;
-    staytimeVal = document.getElementById('staytime').value;
+    deletedVal = document.getElementById('deleted').checked;
+    openedVal = document.getElementById('opened').checked;
+    staytimeVal = document.getElementById('staytime').checked;
+    
     $.post("http://afternoon-basin-47187.herokuapp.com/marketing/feedback",
         {
             name: nameVal,
@@ -75,7 +76,8 @@ function campaignFeedback() {
             planner: plannerVal,
             deleted: deletedVal,
             opened: openedVal,
-            stay_time: staytimeVal
+            stay_time: staytimeVal,
+            type: "email"
         });
 }
 
