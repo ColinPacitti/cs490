@@ -16,9 +16,11 @@
 
     <!-- ReactFire -->
     <script src="https://cdn.firebase.com/libs/reactfire/1.0.0/reactfire.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
     <!-- throw-in-the-towel -->
     <script src="https://npmcdn.com/throw-in-the-towel@2"></script>
+    <script src="post.js"></script>
 
     <!-- Initialize the Firebase SDK -->
     <script>
@@ -42,14 +44,13 @@
         <!-- Tab panes -->
         <div class="tab-content">
             <div class="tab-pane fade in active" id="Sales">
-                <label class="control-label" for="inputPassword">Salesman Name</label>
-                <form class="form-horiztonal">
-                    <input name="salesperson"></input>
+                <label class="control-label">Salesman Name</label>
+                <input type="text" id="salesman" placeholder="Aaron Li">
+                <button onclick="disableSales()" class="btn">Login</button>
                 <div class="page header"><h2>Submit a Sales Order</h2></div>
-                <form class="form-horizontal" formmethod="post">
                     <div class="control-group">
                         <label class="control-label" for="inputEmail">Product Sold</label>
-                        <select name="name">
+                        <select id="product">
                             <option>Pen</option>
                             <option>Pencil</option>
                             <option>Paper</option>
@@ -60,69 +61,105 @@
                     <div class="control-group">
                         <label class="control-label" for="inputEmail">Amount of USD</label>
                         <div class="controls">
-                            <input type="text" id="inputEmail" placeholder="200 Dollars" name="amount">
+                            <input type="text" id="dollars" placeholder="200 Dollars" name="amount">
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="inputPassword">Quantity of Product</label>
                         <div class="controls">
-                            <input id="inputPassword" placeholder="100 Pencils" name="quantity">
+                            <input id="quantity" placeholder="100 Pencils" name="quantity">
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label" for="inputPassword">Customer Name</label>
                         <div class="controls">
-                            <input id="inputPassword" placeholder="Walmart" name="customer">
+                            <input id="customer" placeholder="Walmart" name="customer">
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="controls">
                             <label class="checkbox">
-                                <input type="checkbox" name="received"> Received
+                                <input id="received" type="checkbox" name="received"> Received
                             </label>
-                            <button type="submit" formmethod="post"
-                                    formaction="http://afternoon-basin-47187.herokuapp.com/sales/sale" class="btn" target="_blank">Submit</button>
+                            <button onclick="postSale()" class="btn">Submit</button>
                         </div>
                     </div>
-                </form>
 
                 <div class="page header"><h2>Mark Sales Received</h2></div>
-                <form class="form-horizontal">
                     <div class="control-group">
-                        <label class="control-label" for="inputPassword">Sales ID</label>
+                        <label class="control-label">Sales ID</label>
                         <div class="controls">
-                            <input id="inputPassword" placeholder="524" name="sale_id">
+                            <input id="saleid" placeholder="524">
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="controls">
-                            <button type="submit" class="btn" formmethod="post"
-                                    formaction="http://afternoon-basin-47187.herokuapp.com/sales/received">Mark Received</button>
+                            <button onclick="postMarkSale()" class="btn">Mark Received</button>
                         </div>
                     </div>
-                </form>
+
+                <div class="page header"><h2>Register a new Customer</h2></div>
+                <div class="control-group">
+                    <label class="control-label">Customer Name</label>
+                    <div class="controls">
+                        <input type="text" id="customerName" placeholder="Justin Trudeau">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Customer Email</label>
+                    <div class="controls">
+                        <input id="customerEmail" placeholder="justinT">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Customer Billing Address</label>
+                    <div class="controls">
+                        <input id="customerBilling" placeholder="149 Ottawa Road">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Customer Shipping Address</label>
+                    <div class="controls">
+                        <input id="customerShipping" placeholder="149 Toronto Road">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"> Customer Credit Card Number</label>
+                    <div class="controls">
+                        <input id="customerCredit" placeholder="9999 9999 9999 9999">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Customer CCV</label>
+                    <div class="controls">
+                        <input id="customerCCV" placeholder="999">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <button onclick="postNewCustomer()" class="btn">Register Customer</button>
+                    </div>
+                </div>
 
                 <div class="page header"><h2>My Sales Records</h2></div>
                 <table id="sale_records" class="table table-hover">
-		</table>
-                </form>
+		        </table>
             </div>
 
             <div class="tab-pane fade" id="Marketing">
-                <label class="control-label" for="inputPassword">Planner Name</label>
-                <form class="form-horiztonal">
-                    <input name="planner"></input>
+                <label class="control-label">Planner Name</label>
+                <input id="planner" placeholder="Aaron Li">
+                <button onclick="disablePlanner()" class="btn">Login</button>
                 <div class="page header"><h2>Start a new Campaign</h2></div>
-                <form class="form-horizontal" formmethod="post">
                     <div class="control-group">
                         <label class="control-label" for="inputEmail">Name of Campaign</label>
                         <div class="controls">
-                            <input type="text" id="inputEmail" placeholder="Canada Day Sale!" name="name">
+                            <input type="text" id="nameMarketing" placeholder="Canada Day Sale!">
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="inputEmail">Type of Campaign</label>
-                        <select name="type">
+                        <label class="control-label">Type of Campaign</label>
+                        <select id="typeMarketing" name="type">
                             <option>Email</option>
                             <option>Google AdSense</option>
                             <option>Owl Message</option>
@@ -130,45 +167,40 @@
                     </div>
                     <div class="control-group">
                         <div class="controls">
-                            <button type="submit" class="btn" formmethod="post"
-                                    formaction="http://afternoon-basin-47187.herokuapp.com/marketing/campaign">Submit</button>
+                            <button onclick="postNewCampaign()" class="btn">Submit</button>
                         </div>
                     </div>
-                </form>
 
                 <div class="page header"><h2>Submit Campaign Feedback</h2></div>
-                <form class="form-horizontal">
                     <div class="control-group">
-                        <label class="control-label" for="inputEmail">Name of Campaign</label>
+                        <label class="control-label">Name of Campaign</label>
                         <div class="controls">
-                            <input type="text" id="inputEmail" placeholder="Canada Day Sale!" name="name">
+                            <input type="text" id="nameFeedback" placeholder="Canada Day Sale!">
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="inputEmail">Customer feedback name</label>
+                        <label class="control-label">Customer feedback name</label>
                         <div class="controls">
-                            <input type="text" id="inputEmail" placeholder="Amazon" name="customer">
+                            <input type="text" id="customerFeedback" placeholder="Amazon">
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="inputEmail">Feedback Attributes</label>
+                        <label class="control-label">Feedback Attributes</label>
                         <label class="checkbox">
-                            <input type="checkbox" name="deleted"> Deleted
+                            <input type="checkbox" id="deleted"> Deleted
                         </label>
                         <label class="checkbox">
-                            <input type="checkbox" name="opened"> Opened
+                            <input type="checkbox" id="opened"> Opened
                         </label>
                         <label class="checkbox">
-                            <input type="checkbox" name="stay_time"> Time viewed
+                            <input type="checkbox" id="staytime"> Time viewed
                         </label>
                     </div>
                     <div class="control-group">
                         <div class="controls">
-                            <button type="submit" class="btn" formmethod="post"
-                                formaction="http://afternoon-basin-47187.herokuapp.com/marketing/feedback">Submit</button>
+                            <button onclick="campaignFeedback()" class="btn" >Submit</button>
                         </div>
                     </div>
-                </form>
 
                 <div class="page header"><h2>Currently Running Campaigns</h2></div>
 		<table id="campaign_records" class="table table-hover">
@@ -206,11 +238,9 @@
 		<table id="" class="table table-hover">
 		</table>
             </div>
-            </form>
         </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
